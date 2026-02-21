@@ -14,16 +14,20 @@ import (
 
 func main() {
 	input := "10 + 20"
-	lxer := NewLexer(input)
+	lexer := NewLexer(input)
+	parser := NewParser(lexer)
+	ast := parser.ParseExpression()
 
 	fmt.Printf("input: %q\n\n", input)
 
-	for {
-		tok := lxer.NextToken()
-		fmt.Printf("{Type: %-7s Literal: %q}\n", tok.Type, tok.Literal)
+	if infix, ok := ast.(*InfixExpression); ok {
+		fmt.Printf("AST structure\n")
+		fmt.Printf("Parent Node: %s\n", infix.Operator)
 
-		if tok.Type == EOF {
-			break
-		}
+		left := infix.Left.(*IntegerLiteral)
+		right := infix.Right.(*IntegerLiteral)
+
+		fmt.Printf(" Left  Node: %d\n", left.Value)
+		fmt.Printf(" Right Node: %d\n", right.Value)
 	}
 }
