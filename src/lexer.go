@@ -39,7 +39,7 @@ const (
 	GT  TokenType = ">"
 	GTE TokenType = ">="
 
-	// delimters
+	// delimiters
 	LPAREN TokenType = "("
 	RPAREN TokenType = ")"
 	COMMA  TokenType = ","
@@ -54,7 +54,7 @@ const (
 	GOTO  TokenType = "GOTO"
 	END   TokenType = "END"
 
-	// REPL comamnds
+	// REPL commands
 	RUN  TokenType = "RUN"
 	LIST TokenType = "LIST"
 	NEW  TokenType = "NEW"
